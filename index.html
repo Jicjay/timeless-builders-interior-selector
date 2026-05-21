@@ -10,7 +10,7 @@
         .container { max-width: 1200px; margin: 0 auto; }
         .section { background: white; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .product { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
-        .product img { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; }
+        .product img { width: 140px; height: 140px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
         .product-info { flex: 1; }
         .total { font-size: 32px; font-weight: bold; color: #b38b4d; text-align: center; margin: 40px 0; }
         button { background: #b38b4d; color: white; padding: 18px 40px; font-size: 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; max-width: 400px; display: block; margin: 0 auto; }
@@ -25,62 +25,74 @@
     <!-- 1. Kitchen Cabinets -->
     <div class="section">
         <h2>1. Kitchen Cabinets</h2>
-        <div class="product">
-            <img src="https://picsum.photos/id/1015/120/120" alt="Shaker White">
-            <div class="product-info">
-                <input type="radio" name="cabinets" value="8500" onchange="calculateTotal()"> 
-                <strong>Shaker White</strong> – $8,500<br>
-                Clean, timeless white shaker-style cabinets with soft-close hardware. Bright and classic look.
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://picsum.photos/id/201/120/120" alt="Shaker Gray">
-            <div class="product-info">
-                <input type="radio" name="cabinets" value="10500" onchange="calculateTotal()"> 
-                <strong>Shaker Gray</strong> – $10,500<br>
-                Sophisticated gray shaker cabinets. Modern yet versatile.
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://picsum.photos/id/251/120/120" alt="Custom Stain">
-            <div class="product-info">
-                <input type="radio" name="cabinets" value="13500" onchange="calculateTotal()"> 
-                <strong>Custom Stain</strong> – $13,500<br>
-                Fully custom stained wood with premium full-overlay doors.
-            </div>
-        </div>
+        <div class="product"><img src="https://picsum.photos/id/1015/140/140" alt="Shaker White"><div class="product-info"><input type="radio" name="cabinets" value="8500" onchange="calculateTotal()"> <strong>Shaker White</strong> – $8,500<br>Clean, timeless white shaker-style cabinets with soft-close hardware. Bright and classic look.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/201/140/140" alt="Shaker Gray"><div class="product-info"><input type="radio" name="cabinets" value="10500" onchange="calculateTotal()"> <strong>Shaker Gray</strong> – $10,500<br>Sophisticated gray shaker cabinets. Modern yet versatile.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/251/140/140" alt="Custom Stain"><div class="product-info"><input type="radio" name="cabinets" value="13500" onchange="calculateTotal()"> <strong>Custom Stain</strong> – $13,500<br>Fully custom stained wood with premium full-overlay doors.</div></div>
     </div>
 
     <!-- 2. Bathroom Vanities -->
     <div class="section">
         <h2>2. Bathroom Vanities (all baths)</h2>
-        <div class="product">
-            <img src="https://picsum.photos/id/1016/120/120" alt="White Shaker">
-            <div class="product-info">
-                <input type="radio" name="vanities" value="3200" onchange="calculateTotal()"> 
-                <strong>White Shaker</strong> – $3,200<br>
-                Bright white shaker vanities with soft-close drawers.
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://picsum.photos/id/201/120/120" alt="Espresso">
-            <div class="product-info">
-                <input type="radio" name="vanities" value="4200" onchange="calculateTotal()"> 
-                <strong>Espresso</strong> – $4,200<br>
-                Rich espresso finish with modern hardware.
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://picsum.photos/id/251/120/120" alt="Custom">
-            <div class="product-info">
-                <input type="radio" name="vanities" value="5800" onchange="calculateTotal()"> 
-                <strong>Custom Finish</strong> – $5,800<br>
-                Premium custom stain or painted finish with upgraded hardware.
-            </div>
-        </div>
+        <div class="product"><img src="https://picsum.photos/id/1016/140/140" alt="White Shaker"><div class="product-info"><input type="radio" name="vanities" value="3200" onchange="calculateTotal()"> <strong>White Shaker</strong> – $3,200<br>Bright white shaker vanities with soft-close drawers.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/201/140/140" alt="Espresso"><div class="product-info"><input type="radio" name="vanities" value="4200" onchange="calculateTotal()"> <strong>Espresso</strong> – $4,200<br>Rich espresso finish with modern hardware.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/251/140/140" alt="Custom"><div class="product-info"><input type="radio" name="vanities" value="5800" onchange="calculateTotal()"> <strong>Custom Finish</strong> – $5,800<br>Premium custom stain or painted finish with upgraded hardware.</div></div>
     </div>
 
-    <!-- Add the rest of the categories the same way (Countertops, Flooring, Tile, Paint, Lighting, Appliances, Plumbing). I kept this short so you can test it immediately. -->
+    <!-- 3. Countertops -->
+    <div class="section">
+        <h2>3. Countertops (Kitchen + All Baths)</h2>
+        <div class="product"><img src="https://picsum.photos/id/1005/140/140" alt="Standard Quartz"><div class="product-info"><input type="radio" name="countertops" value="6500" onchange="calculateTotal()"> <strong>Standard Quartz (White)</strong> – $6,500<br>Durable quartz with subtle white veining.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/1018/140/140" alt="Calacatta"><div class="product-info"><input type="radio" name="countertops" value="7900" onchange="calculateTotal()"> <strong>Calacatta Gold Quartz</strong> – $7,900<br>Elegant white marble-look quartz with gold veining.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/133/140/140" alt="Black Marble"><div class="product-info"><input type="radio" name="countertops" value="10500" onchange="calculateTotal()"> <strong>Black Marble Quartz</strong> – $10,500<br>Dramatic black quartz with white veining.</div></div>
+    </div>
+
+    <!-- 4. Main Level Flooring -->
+    <div class="section">
+        <h2>4. Main Level Flooring</h2>
+        <div class="product"><img src="https://picsum.photos/id/1009/140/140" alt="LVP"><div class="product-info"><input type="radio" name="flooring" value="6500" onchange="calculateTotal()"> <strong>Luxury Vinyl Plank</strong> – $6,500<br>Waterproof, realistic wood-look LVP, easy maintenance.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/101/140/140" alt="Oak"><div class="product-info"><input type="radio" name="flooring" value="9800" onchange="calculateTotal()"> <strong>Engineered Hardwood (Oak)</strong> – $9,800<br>Real oak engineered hardwood, warm and durable.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/160/140/140" alt="Solid Hardwood"><div class="product-info"><input type="radio" name="flooring" value="13500" onchange="calculateTotal()"> <strong>Solid Hardwood</strong> – $13,500<br>Premium solid hardwood flooring.</div></div>
+    </div>
+
+    <!-- 5. Tile -->
+    <div class="section">
+        <h2>5. Tile (Baths, Entry, Laundry)</h2>
+        <div class="product"><img src="https://picsum.photos/id/201/140/140" alt="Porcelain"><div class="product-info"><input type="radio" name="tile" value="2800" onchange="calculateTotal()"> <strong>Standard Porcelain</strong> – $2,800<br>Classic large-format porcelain tile.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/251/140/140" alt="Premium Porcelain"><div class="product-info"><input type="radio" name="tile" value="4200" onchange="calculateTotal()"> <strong>Premium Porcelain (Marble Look)</strong> – $4,200<br>High-end marble-look porcelain.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/133/140/140" alt="Natural Stone"><div class="product-info"><input type="radio" name="tile" value="6500" onchange="calculateTotal()"> <strong>Natural Stone Tile</strong> – $6,500<br>Real marble or travertine tile.</div></div>
+    </div>
+
+    <!-- 6. Interior Paint -->
+    <div class="section">
+        <h2>6. Interior Paint & Finishes (Whole House)</h2>
+        <div class="product"><img src="https://picsum.photos/id/1015/140/140" alt="Basic Paint"><div class="product-info"><input type="radio" name="paint" value="4200" onchange="calculateTotal()"> <strong>2-Color Basic</strong> – $4,200<br>Sherwin Williams paint, 2 colors, basic trim.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/201/140/140" alt="Premium Paint"><div class="product-info"><input type="radio" name="paint" value="5800" onchange="calculateTotal()"> <strong>3+ Colors Premium</strong> – $5,800<br>Multiple colors plus upgraded trim work.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/251/140/140" alt="Designer"><div class="product-info"><input type="radio" name="paint" value="8500" onchange="calculateTotal()"> <strong>Designer Package</strong> – $8,500<br>Custom colors, accent walls, and cabinet painting.</div></div>
+    </div>
+
+    <!-- 7. Lighting -->
+    <div class="section">
+        <h2>7. Lighting Package</h2>
+        <div class="product"><img src="https://picsum.photos/id/160/140/140" alt="Builder LED"><div class="product-info"><input type="radio" name="lighting" value="3800" onchange="calculateTotal()"> <strong>Builder-Grade LED</strong> – $3,800<br>Recessed lighting and basic fixtures.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/1005/140/140" alt="Modern"><div class="product-info"><input type="radio" name="lighting" value="5200" onchange="calculateTotal()"> <strong>Modern LED + Pendants</strong> – $5,200<br>Contemporary LED lighting with pendants.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/133/140/140" alt="Designer"><div class="product-info"><input type="radio" name="lighting" value="7500" onchange="calculateTotal()"> <strong>Designer Fixtures</strong> – $7,500<br>Premium chandeliers, sconces, and smart lighting.</div></div>
+    </div>
+
+    <!-- 8. Appliances -->
+    <div class="section">
+        <h2>8. Appliance Package</h2>
+        <div class="product"><img src="https://picsum.photos/id/1016/140/140" alt="Standard"><div class="product-info"><input type="radio" name="appliances" value="6500" onchange="calculateTotal()"> <strong>Standard Stainless</strong> – $6,500<br>Basic stainless refrigerator, range, dishwasher, microwave.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/201/140/140" alt="Upgraded"><div class="product-info"><input type="radio" name="appliances" value="9500" onchange="calculateTotal()"> <strong>Upgraded Stainless</strong> – $9,500<br>Quiet, smart-feature appliances.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/251/140/140" alt="Premium"><div class="product-info"><input type="radio" name="appliances" value="14500" onchange="calculateTotal()"> <strong>Premium Suite</strong> – $14,500<br>High-end appliance package.</div></div>
+    </div>
+
+    <!-- 9. Plumbing Fixtures -->
+    <div class="section">
+        <h2>9. Plumbing Fixtures</h2>
+        <div class="product"><img src="https://picsum.photos/id/1005/140/140" alt="Brushed Nickel"><div class="product-info"><input type="radio" name="plumbing" value="4200" onchange="calculateTotal()"> <strong>Brushed Nickel Standard</strong> – $4,200<br>Brushed nickel faucets and showerheads.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/101/140/140" alt="Matte Black"><div class="product-info"><input type="radio" name="plumbing" value="5800" onchange="calculateTotal()"> <strong>Matte Black Upgrade</strong> – $5,800<br>Modern matte black fixtures.</div></div>
+        <div class="product"><img src="https://picsum.photos/id/133/140/140" alt="Designer"><div class="product-info"><input type="radio" name="plumbing" value="8200" onchange="calculateTotal()"> <strong>Designer Package</strong> – $8,200<br>Premium finishes with rainfall showers.</div></div>
+    </div>
 
     <div class="total" id="total">$0.00</div>
     
