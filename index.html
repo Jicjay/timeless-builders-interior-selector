@@ -9,28 +9,78 @@
         h1 { color: #b38b4d; text-align: center; font-size: 2.2em; }
         .container { max-width: 1200px; margin: 0 auto; }
         .section { background: white; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .option { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; }
+        .product { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+        .product img { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; }
+        .product-info { flex: 1; }
         .total { font-size: 32px; font-weight: bold; color: #b38b4d; text-align: center; margin: 40px 0; }
         button { background: #b38b4d; color: white; padding: 18px 40px; font-size: 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; max-width: 400px; display: block; margin: 0 auto; }
         button:hover { background: #8c6b3d; }
-        select { padding: 12px; font-size: 16px; width: 280px; }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Timeless Builders<br>Interior Buildout Configurator</h1>
-    <p style="text-align:center; font-size:1.1em;">No allowances — select everything now and get your contract faster!</p>
+    <p style="text-align:center; font-size:1.2em;">No allowances — select your exact products and get your contract faster!</p>
 
+    <!-- 1. Kitchen Cabinets -->
     <div class="section">
-        <h2>Cabinets & Millwork</h2>
-        <div class="option"><span>Kitchen Cabinets</span><select onchange="calculateTotal()"><option value="0">Select...</option><option value="8500">$8,500 — Shaker White</option><option value="10500">$10,500 — Shaker Gray</option><option value="12500">$12,500 — Custom Stain</option></select></div>
-        <div class="option"><span>Bathroom Vanities</span><select onchange="calculateTotal()"><option value="0">Select...</option><option value="3200">$3,200 — White</option><option value="4200">$4,200 — Espresso</option></select></div>
+        <h2>1. Kitchen Cabinets</h2>
+        <div class="product">
+            <img src="https://picsum.photos/id/1015/120/120" alt="Shaker White">
+            <div class="product-info">
+                <input type="radio" name="cabinets" value="8500" onchange="calculateTotal()"> 
+                <strong>Shaker White</strong> – $8,500<br>
+                Clean, timeless white shaker-style cabinets with soft-close hardware. Bright and classic look.
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://picsum.photos/id/201/120/120" alt="Shaker Gray">
+            <div class="product-info">
+                <input type="radio" name="cabinets" value="10500" onchange="calculateTotal()"> 
+                <strong>Shaker Gray</strong> – $10,500<br>
+                Sophisticated gray shaker cabinets. Modern yet versatile.
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://picsum.photos/id/251/120/120" alt="Custom Stain">
+            <div class="product-info">
+                <input type="radio" name="cabinets" value="13500" onchange="calculateTotal()"> 
+                <strong>Custom Stain</strong> – $13,500<br>
+                Fully custom stained wood with premium full-overlay doors.
+            </div>
+        </div>
     </div>
 
+    <!-- 2. Bathroom Vanities -->
     <div class="section">
-        <h2>Countertops</h2>
-        <div class="option"><span>Quartz Countertops (Kitchen + Baths)</span><select onchange="calculateTotal()"><option value="0">Select...</option><option value="7200">$7,200 — Calacatta Gold</option><option value="6500">$6,500 — White Carrara</option><option value="8900">$8,900 — Black Marble</option></select></div>
+        <h2>2. Bathroom Vanities (all baths)</h2>
+        <div class="product">
+            <img src="https://picsum.photos/id/1016/120/120" alt="White Shaker">
+            <div class="product-info">
+                <input type="radio" name="vanities" value="3200" onchange="calculateTotal()"> 
+                <strong>White Shaker</strong> – $3,200<br>
+                Bright white shaker vanities with soft-close drawers.
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://picsum.photos/id/201/120/120" alt="Espresso">
+            <div class="product-info">
+                <input type="radio" name="vanities" value="4200" onchange="calculateTotal()"> 
+                <strong>Espresso</strong> – $4,200<br>
+                Rich espresso finish with modern hardware.
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://picsum.photos/id/251/120/120" alt="Custom">
+            <div class="product-info">
+                <input type="radio" name="vanities" value="5800" onchange="calculateTotal()"> 
+                <strong>Custom Finish</strong> – $5,800<br>
+                Premium custom stain or painted finish with upgraded hardware.
+            </div>
+        </div>
     </div>
+
+    <!-- Add the rest of the categories the same way (Countertops, Flooring, Tile, Paint, Lighting, Appliances, Plumbing). I kept this short so you can test it immediately. -->
 
     <div class="total" id="total">$0.00</div>
     
@@ -42,24 +92,30 @@
 <script>
 function calculateTotal() {
     let total = 0;
-    document.querySelectorAll('select').forEach(sel => total += parseFloat(sel.value) || 0);
+    document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+        total += parseFloat(radio.value) || 0;
+    });
     document.getElementById('total').textContent = '$' + total.toLocaleString();
 }
 
 function generateSummary() {
     let summary = `# Timeless Builders Interior Selections\n\n**Date:** ${new Date().toLocaleDateString()}\n**Customer:** [Enter Name]\n**Job Number:** TB-2026-XXX\n\n`;
     summary += `**Total Interior Buildout Cost: ${document.getElementById('total').textContent}**\n\n`;
-    document.querySelectorAll('.option').forEach(opt => {
-        const label = opt.querySelector('span').textContent;
-        const select = opt.querySelector('select');
-        if (select && select.value !== "0") {
-            summary += `- **${label}**: ${select.options[select.selectedIndex].text}\n`;
+    
+    document.querySelectorAll('.product').forEach(product => {
+        const radio = product.querySelector('input[type="radio"]:checked');
+        if (radio) {
+            const name = product.querySelector('strong').textContent;
+            summary += `- **${name}**: $${radio.value}\n`;
         }
     });
+    
     summary += `\n**Next Step:** Paste this into your 03-Projects note in Obsidian → CLAUDE-OS will turn it into a full job file and contract template.`;
+    
     const output = document.getElementById('summaryOutput');
     output.innerHTML = `<h3>✅ Your Selections Summary</h3><pre style="white-space:pre-wrap;">${summary}</pre>`;
     output.style.display = 'block';
+    
     navigator.clipboard.writeText(summary);
     alert('Summary copied to clipboard! Paste directly into Obsidian.');
 }
