@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Builders • Interior Buildout Selections</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f8f5f0; color: #2c2c2c; }
+        h1 { color: #b38b4d; text-align: center; font-size: 2.2em; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section { background: white; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .option { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; }
+        .total { font-size: 32px; font-weight: bold; color: #b38b4d; text-align: center; margin: 40px 0; }
+        button { background: #b38b4d; color: white; padding: 18px 40px; font-size: 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; max-width: 400px; display: block; margin: 0 auto; }
+        button:hover { background: #8c6b3d; }
+        select { padding: 12px; font-size: 16px; width: 280px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Timeless Builders<br>Interior Buildout Configurator</h1>
+    <p style="text-align:center; font-size:1.1em;">No allowances — select everything now and get your contract faster!</p>
+
+    <div class="section">
+        <h2>Cabinets & Millwork</h2>
+        <div class="option"><span>Kitchen Cabinets</span><select onchange="calculateTotal()"><option value="0">Select...</option><option value="8500">$8,500 — Shaker White</option><option value="10500">$10,500 — Shaker Gray</option><option value="12500">$12,500 — Custom Stain</option></select></div>
+        <div class="option"><span>Bathroom Vanities</span><select onchange="calculateTotal()"><option value="0">Select...</option><option value="3200">$3,200 — White</option><option value="4200">$4,200 — Espresso</option></select></div>
+    </div>
+
+    <div class="section">
+        <h2>Countertops</h2>
+        <div class="option"><span>Quartz Countertops (Kitchen + Baths)</span><select onchange="calculateTotal()"><option value="0">Select...</option><option value="7200">$7,200 — Calacatta Gold</option><option value="6500">$6,500 — White Carrara</option><option value="8900">$8,900 — Black Marble</option></select></div>
+    </div>
+
+    <div class="total" id="total">$0.00</div>
+    
+    <button onclick="generateSummary()">✅ Generate Contract-Ready Summary (for Obsidian)</button>
+    
+    <div id="summaryOutput" style="margin-top:30px; padding:20px; background:#fff; border-radius:12px; display:none;"></div>
+</div>
+
+<script>
+function calculateTotal() {
+    let total = 0;
+    document.querySelectorAll('select').forEach(sel => total += parseFloat(sel.value) || 0);
+    document.getElementById('total').textContent = '$' + total.toLocaleString();
+}
+
+function generateSummary() {
+    let summary = `# Timeless Builders Interior Selections\n\n**Date:** ${new Date().toLocaleDateString()}\n**Customer:** [Enter Name]\n**Job Number:** TB-2026-XXX\n\n`;
+    summary += `**Total Interior Buildout Cost: ${document.getElementById('total').textContent}**\n\n`;
+    document.querySelectorAll('.option').forEach(opt => {
+        const label = opt.querySelector('span').textContent;
+        const select = opt.querySelector('select');
+        if (select && select.value !== "0") {
+            summary += `- **${label}**: ${select.options[select.selectedIndex].text}\n`;
+        }
+    });
+    summary += `\n**Next Step:** Paste this into your 03-Projects note in Obsidian → CLAUDE-OS will turn it into a full job file and contract template.`;
+    const output = document.getElementById('summaryOutput');
+    output.innerHTML = `<h3>✅ Your Selections Summary</h3><pre style="white-space:pre-wrap;">${summary}</pre>`;
+    output.style.display = 'block';
+    navigator.clipboard.writeText(summary);
+    alert('Summary copied to clipboard! Paste directly into Obsidian.');
+}
+</script>
+</body>
+</html>
